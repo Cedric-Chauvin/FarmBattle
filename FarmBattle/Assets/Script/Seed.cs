@@ -10,6 +10,7 @@ public class Seed : Pickable
     public int size = 50;
     public float mass = 20;
     public float growthTime = 5;
+    [Range(0, 100)]
     public int pumpkinMalus = 50;
 
 }

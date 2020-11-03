@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3620654145367009906}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WaterPump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3620654146272664796}
   - component: {fileID: 3620654146272664797}
   - component: {fileID: 3620654146272664786}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PumpBucketZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 3620654146847828364}
   - component: {fileID: 3620654146847828365}
   - component: {fileID: 3620654146847828354}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PumpPlayerZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
