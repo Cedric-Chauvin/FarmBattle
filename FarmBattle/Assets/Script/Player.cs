@@ -21,6 +21,12 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public Pickable item;
+    [HideInInspector]
+    public bool isOnPump = false;
+    [HideInInspector]
+    public Bucket bucketToFill = null;
+    [HideInInspector]
+    public bool tryPump = false;
 
     private bool isStunned = false;
     private Rewired.Player player;
@@ -28,7 +34,7 @@ public class Player : MonoBehaviour
     private bool isHolding = false;
     private float speedMalus = 0;
     private bool canHit = true;
-    private Rigidbody2D rigidbody; 
+    private Rigidbody2D rigidbody;
 
     void Awake()
     {
@@ -90,6 +96,10 @@ public class Player : MonoBehaviour
             isHolding = true;
             speedMalus = item.speedMalus / 100.0f;
             item.rigidbody.simulated = false;
+        }
+        else if (isOnPump)
+        {
+            tryPump = true;
         }
     }
 
