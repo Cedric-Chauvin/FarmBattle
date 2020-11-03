@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
             float moveX = moveVector.x * speed * (1-speedMalus);
             float moveY = moveVector.y * speed * (1-speedMalus);
             rigidbody.velocity = new Vector3(moveX, moveY, 0);
-            if (moveX != 0 && moveY != 0)
+            if (moveX != 0 || moveY != 0)
             {
                 if (moveY >= 0)
                     transform.rotation = Quaternion.Euler(0, 0, Vector2.Angle(Vector2.right, new Vector2(moveX, moveY)));
