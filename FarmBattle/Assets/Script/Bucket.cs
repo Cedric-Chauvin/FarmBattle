@@ -8,7 +8,8 @@ public class Bucket : Pickable
     [Range(1, 10)]
     public int PumpNumberToFillTheBucket;
 
-    private int fillingRate = 0;
+    [HideInInspector]
+    public int fillingRate = 0;
 
     public override void UseObject(Player.TEAM team)
     {

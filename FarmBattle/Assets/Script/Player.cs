@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 using System;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
     public Bucket bucketToFill = null;
     [HideInInspector]
     public bool tryPump = false;
+    public Action<Pickable> OnRelease;
 
     private bool isStunned = false;
     private Rewired.Player player;
@@ -127,6 +129,7 @@ public class Player : MonoBehaviour
     {
         item.rigidbody.simulated = true;
         item.transform.parent = null;
+        OnRelease?.Invoke(item);
         item = null;
         isHolding = false;
         speedMalus = 0;

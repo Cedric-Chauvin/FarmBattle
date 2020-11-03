@@ -33,8 +33,8 @@ public class ValidationArea : MonoBehaviour
             if(player.item !=null && player.item.type == Pickable.TYPE.PUMPKIN)
             {
                 player.item.UseObject(player.team);
-                player.RemoveItem();
                 Destroy(player.item.gameObject);
+                player.RemoveItem();
             }
         }
     }
