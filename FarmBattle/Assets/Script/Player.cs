@@ -2,16 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+using System;
 
 public class Player : MonoBehaviour
 {
     public int playerId;
     public float speed;
-    [HideInInspector]
-    public bool isStunned = false;
+    public float pickDistance;
+    public float stunTime;
+    public float stunCooldown;
+    public TEAM team;
 
+    public enum TEAM
+    {
+        TEAM1,
+        TEAM2
+    }
+
+    [HideInInspector]
+    public Pickable item;
+
+    private bool isStunned = false;
     private Rewired.Player player;
     private Vector2 moveVector;
+    private bool isHolding = false;
+    private float speedMalus = 0;
+    private bool canHit = true;
 
     void Awake()
     {
@@ -38,9 +54,78 @@ public class Player : MonoBehaviour
     {
         if (!isStunned)
         {
-            float moveX = moveVector.x * speed * Time.deltaTime;
-            float moveY = moveVector.y * speed * Time.deltaTime;
+            float moveX = moveVector.x * speed * Time.deltaTime * (1-speedMalus);
+            float moveY = moveVector.y * speed * Time.deltaTime * (1-speedMalus);
             transform.position += new Vector3(moveX, moveY, 0);
+            if (moveX != 0 && moveY != 0)
+            {
+                if (moveY >= 0)
+                    transform.rotation = Quaternion.Euler(0, 0, Vector2.Angle(Vector2.right, new Vector2(moveX, moveY)));
+                else
+                    transform.rotation = Quaternion.Euler(0, 0, -Vector2.Angle(Vector2.right, new Vector2(moveX, moveY)));
+            }
+            if (player.GetButtonDown("Action"))
+                Action();
+            if (player.GetButtonDown("Hit") && !isHolding && canHit)
+                TryHit();
         }
+    }
+
+    private void Action()
+    {
+        if (isHolding)
+        {
+            RemoveItem();
+            return;
+        }
+        Debug.Log("Action");
+        RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).position, transform.GetChild(0).position-transform.position, pickDistance);
+        if(hit && hit.transform.tag == "Pickable")
+        {
+            item = hit.transform.GetComponent<Pickable>();
+            item.transform.parent = transform.GetChild(0);
+            item.transform.localPosition = Vector3.zero;
+            isHolding = true;
+            speedMalus = item.speedMalus / 100.0f;
+            item.rigidbody.simulated = false;
+        }
+    }
+
+    private void TryHit()
+    {
+        Debug.Log("Hit");
+        RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).position, transform.GetChild(0).position - transform.position, pickDistance);
+        Player player = hit && hit.transform.tag == "Player" ? hit.transform.GetComponent<Player>() : null;
+        if (player != null && player.team != team)
+        {
+            player.Stunned();
+        }
+        canHit = false;
+        StartCoroutine(StunCooldown());
+    }
+
+    public void Stunned()
+    {
+        isStunned = true;
+        StartCoroutine(StunRoutine());
+    }
+
+    public void RemoveItem()
+    {
+        item.rigidbody.simulated = true;
+        item.transform.parent = null;
+        isHolding = false;
+        speedMalus = 0;
+    }
+
+    IEnumerator StunRoutine()
+    {
+        yield return new WaitForSeconds(stunTime);
+        isStunned = false;
+    }
+    IEnumerator StunCooldown()
+    {
+        yield return new WaitForSeconds(stunCooldown);
+        canHit = true;
     }
 }
