@@ -32,7 +32,7 @@ public class ValidationArea : MonoBehaviour
         {
             if(player.item !=null && player.item.type == Pickable.TYPE.PUMPKIN)
             {
-                UIManager.GetInstance().AddPoint(player.team, player.item.point);
+                player.item.UseObject(player.team);
                 player.RemoveItem();
                 Destroy(player.item.gameObject);
             }

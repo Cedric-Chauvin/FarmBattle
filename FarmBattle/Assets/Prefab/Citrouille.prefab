@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3689258635189736468}
   - component: {fileID: 3689258635189736469}
-  - component: {fileID: 3689258635189736467}
   - component: {fileID: 3689258635189736466}
   - component: {fileID: 3689258635189736471}
+  - component: {fileID: 7170741936847174670}
   m_Layer: 0
   m_Name: Citrouille
   m_TagString: Pickable
@@ -85,22 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3689258635189736467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3689258635189736464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d9e691e6894da4ba843549faecab11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedMalus: 50
-  type: 0
-  point: 1
-  rigidbody: {fileID: 0}
 --- !u!58 &3689258635189736466
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -129,8 +113,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1
+  m_Mass: 10
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -138,3 +122,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7170741936847174670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689258635189736464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f27e0b490e7fbb4e927d5ba747ea882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMalus: 50
+  type: 0
+  rigidbody: {fileID: 0}
+  point: 1

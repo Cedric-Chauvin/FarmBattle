@@ -28,11 +28,13 @@ public class Player : MonoBehaviour
     private bool isHolding = false;
     private float speedMalus = 0;
     private bool canHit = true;
+    private Rigidbody2D rigidbody; 
 
     void Awake()
     {
         // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
         player = ReInput.players.GetPlayer(playerId);
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -54,9 +56,9 @@ public class Player : MonoBehaviour
     {
         if (!isStunned)
         {
-            float moveX = moveVector.x * speed * Time.deltaTime * (1-speedMalus);
-            float moveY = moveVector.y * speed * Time.deltaTime * (1-speedMalus);
-            transform.position += new Vector3(moveX, moveY, 0);
+            float moveX = moveVector.x * speed * (1-speedMalus);
+            float moveY = moveVector.y * speed * (1-speedMalus);
+            rigidbody.velocity = new Vector3(moveX, moveY, 0);
             if (moveX != 0 && moveY != 0)
             {
                 if (moveY >= 0)
@@ -108,6 +110,7 @@ public class Player : MonoBehaviour
     {
         isStunned = true;
         StartCoroutine(StunRoutine());
+        RemoveItem();
     }
 
     public void RemoveItem()

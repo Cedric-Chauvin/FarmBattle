@@ -8,9 +8,6 @@ public class Pickable : MonoBehaviour
     public int speedMalus = 20;
     public TYPE type = TYPE.PUMPKIN;
 
-    [Header("Pumpkin parameter")]
-    public int point = 1;
-
     [HideInInspector]
     public Rigidbody2D rigidbody = null;
 
@@ -24,6 +21,11 @@ public class Pickable : MonoBehaviour
         PUMPKIN,
         BUCKET,
         SEED
+    }
+
+    public virtual void UseObject(Player.TEAM team)
+    {
+
     }
 
 }
