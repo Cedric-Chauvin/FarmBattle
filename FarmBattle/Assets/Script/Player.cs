@@ -117,6 +117,7 @@ public class Player : MonoBehaviour
     {
         item.rigidbody.simulated = true;
         item.transform.parent = null;
+        item = null;
         isHolding = false;
         speedMalus = 0;
     }
