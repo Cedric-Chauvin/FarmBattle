@@ -12,5 +12,19 @@ public class Seed : Pickable
     public float growthTime = 5;
     [Range(0, 100)]
     public int pumpkinMalus = 50;
+    public Sprite pumpkinSprite;
+    public Sprite growSprite;
+
+    private SpriteRenderer spriteRenderer;
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    public void ChangeState()
+    {
+        spriteRenderer.sprite = growSprite;
+    }
 
 }

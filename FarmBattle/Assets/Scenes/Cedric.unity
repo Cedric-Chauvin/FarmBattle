@@ -1335,6 +1335,18 @@ PrefabInstance:
       propertyPath: point
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1678406206472170885, guid: d685a8081e8baea46acabbe429721a72, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678406206472170885, guid: d685a8081e8baea46acabbe429721a72, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678406206472170885, guid: d685a8081e8baea46acabbe429721a72, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1678406206472170886, guid: d685a8081e8baea46acabbe429721a72, type: 3}
       propertyPath: m_Name
       value: Seed
@@ -1455,11 +1467,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3689258635189736468, guid: 1997401821f3a864eb637cc2a4496803, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4
+      value: -5.12
       objectReference: {fileID: 0}
     - target: {fileID: 3689258635189736468, guid: 1997401821f3a864eb637cc2a4496803, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.057976253
+      value: 0.47
       objectReference: {fileID: 0}
     - target: {fileID: 3689258635189736468, guid: 1997401821f3a864eb637cc2a4496803, type: 3}
       propertyPath: m_LocalPosition.z

@@ -41,8 +41,8 @@ public class Field : MonoBehaviour
         {
             StartCoroutine(GrowthRoutine(seed.growthTime));
             bucket.fillingRate = 0;
-            bucket.UpdateFillingRate();
             tilemap.SetTile(CellPosition, wateredTile);
+            seed.ChangeState();
         }
     }
 
@@ -56,8 +56,9 @@ public class Field : MonoBehaviour
         instance.rigidbody.mass = seed.mass;
         instance.rigidbody.drag = seed.mass;
         instance.speedMalus = seed.pumpkinMalus;
-        instance.transform.localScale = Vector3.one * seed.size / 100;
+        instance.transform.localScale = Vector3.one * (seed.size / 100)*2;
         instance.transform.position = transform.position;
+        instance.GetComponent<SpriteRenderer>().sprite = seed.pumpkinSprite;
         seed = null;
         tilemap.SetTile(CellPosition, normalTile);
         ChangeState();

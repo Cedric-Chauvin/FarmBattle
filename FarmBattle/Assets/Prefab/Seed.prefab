@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: fb21d43469c422e4799d052c515883f3, type: 3}
-  m_Color: {r: 0.4528302, g: 0.27369896, b: 0.07475969, a: 1}
+  m_Sprite: {fileID: 21300000, guid: fb6f1fee26cb9054883917d0eea4bee0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.3, y: 0.27}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -105,6 +105,8 @@ MonoBehaviour:
   mass: 20
   growthTime: 5
   pumpkinMalus: 50
+  pumpkinSprite: {fileID: 21300000, guid: 2c5829aa9eb18624f99a47680b1f8ea4, type: 3}
+  growSprite: {fileID: 21300000, guid: 8b8edceddf8ad6a4da8c3cc69d33b93b, type: 3}
 --- !u!58 &1678406206472170887
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -118,7 +120,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.03}
   serializedVersion: 2
   m_Radius: 0.15
 --- !u!50 &1678406206472170883
