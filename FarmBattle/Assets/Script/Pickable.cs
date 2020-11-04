@@ -11,9 +11,12 @@ public class Pickable : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D rigidbody = null;
 
+    protected SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public enum TYPE
