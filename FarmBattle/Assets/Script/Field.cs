@@ -7,8 +7,7 @@ public class Field : MonoBehaviour
 {
     public Pumpkin pumpkin;
     public Vector3Int CellPosition;
-    public TileBase normalTile;
-    public TileBase wateredTile;
+    public TilesGroups tilesGroups;
 
     private Seed seed = null;
     private List<Player> players = new List<Player>();
@@ -41,7 +40,7 @@ public class Field : MonoBehaviour
         {
             StartCoroutine(GrowthRoutine(seed.growthTime));
             bucket.fillingRate = 0;
-            tilemap.SetTile(CellPosition, wateredTile);
+            tilemap.SetTile(CellPosition, tilesGroups.wateredTile);
             seed.ChangeState();
         }
     }
@@ -56,11 +55,11 @@ public class Field : MonoBehaviour
         instance.rigidbody.mass = seed.mass;
         instance.rigidbody.drag = seed.mass;
         instance.speedMalus = seed.pumpkinMalus;
-        instance.transform.localScale = Vector3.one * (seed.size / 100)*2;
+        instance.transform.localScale = Vector3.one * (seed.size / 100.0f)*2;
         instance.transform.position = transform.position;
         instance.GetComponent<SpriteRenderer>().sprite = seed.pumpkinSprite;
         seed = null;
-        tilemap.SetTile(CellPosition, normalTile);
+        tilemap.SetTile(CellPosition, tilesGroups.normalTile);
         ChangeState();
     }
 

@@ -15,13 +15,6 @@ public class Seed : Pickable
     public Sprite pumpkinSprite;
     public Sprite growSprite;
 
-    private SpriteRenderer spriteRenderer;
-
-    private void Awake()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
     public void ChangeState()
     {
         spriteRenderer.sprite = growSprite;
