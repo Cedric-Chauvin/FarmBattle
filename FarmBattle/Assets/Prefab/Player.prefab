@@ -184,9 +184,12 @@ MonoBehaviour:
   speed: 5
   pickDistance: 0.5
   stunTime: 2
-  stunCooldown: 0
   team: 1
   item: {fileID: 0}
+  isOnPump: 0
+  bucketToFill: {fileID: 0}
+  tryPump: 0
+  isHolding: 0
 --- !u!58 &1064156198885358303
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -221,6 +224,6 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4

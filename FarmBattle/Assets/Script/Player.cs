@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     public float speed;
     public float pickDistance;
     public float stunTime;
-    public float stunCooldown;
     public TEAM team;
 
     public enum TEAM
@@ -29,13 +28,13 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool tryPump = false;
     public Action<Pickable> OnRelease;
+    [HideInInspector]
+    public bool isHolding = false;
 
     private bool isStunned = false;
     private Rewired.Player player;
     private Vector2 moveVector;
-    private bool isHolding = false;
     private float speedMalus = 0;
-    private bool canHit = true;
     private Rigidbody2D rigidbody;
 
     void Awake()
@@ -76,13 +75,15 @@ public class Player : MonoBehaviour
             }
             if (player.GetButtonDown("Action"))
                 Action();
-            if (player.GetButtonDown("Hit") && !isHolding && canHit)
+            if (player.GetButtonDown("Hit") && isHolding && item.type == Pickable.TYPE.BAT)
                 TryHit();
         }
     }
 
     private void Action()
     {
+        if (item.type == Pickable.TYPE.BAT)
+            return;
         if (isHolding)
         {
             RemoveItem();
@@ -114,8 +115,8 @@ public class Player : MonoBehaviour
         {
             player.Stunned();
         }
-        canHit = false;
-        StartCoroutine(StunCooldown());
+        item = null;
+        isHolding = false;
     }
 
     public void Stunned()
@@ -141,10 +142,5 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(stunTime);
         isStunned = false;
-    }
-    IEnumerator StunCooldown()
-    {
-        yield return new WaitForSeconds(stunCooldown);
-        canHit = true;
     }
 }

@@ -20,7 +20,8 @@ public class Pickable : MonoBehaviour
     {
         PUMPKIN,
         BUCKET,
-        SEED
+        SEED,
+        BAT
     }
 
     public virtual void UseObject(Player.TEAM team)
