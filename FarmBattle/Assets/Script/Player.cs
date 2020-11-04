@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
 
     private void Action()
     {
-        if (item.type == Pickable.TYPE.BAT)
+        if (item && item.type == Pickable.TYPE.BAT)
             return;
         if (isHolding)
         {
