@@ -12,15 +12,11 @@ public class BatZone : MonoBehaviour
 
     private bool batOnIt = true;
     private Player player = null;
-
-    //tmp
-    private SpriteRenderer spriteRenderer;
-    private Color32 cBat = new Color32(210, 88, 174, 255);
-    private Color32 cNoBat = new Color32(132, 132, 132, 255);
+    private Animator animator;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -35,7 +31,7 @@ public class BatZone : MonoBehaviour
                 player.item = bat;
                 player.isHolding = true;
                 batOnIt = false;
-                spriteRenderer.color = cNoBat;
+                animator.SetBool("Bat", batOnIt);
             }
         }
     }
@@ -53,6 +49,6 @@ public class BatZone : MonoBehaviour
     {
         yield return new WaitForSeconds(batCooldownAfterUsed);
         batOnIt = true;
-        spriteRenderer.color = cBat;
+        animator.SetBool("Bat", batOnIt);
     }
 }
