@@ -1,17 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Field : MonoBehaviour
 {
     public Pumpkin pumpkin;
+    public Vector3Int CellPosition;
+    public TileBase normalTile;
+    public TileBase wateredTile;
 
     private Seed seed = null;
     private List<Player> players = new List<Player>();
+    private Tilemap tilemap;
 
     private void Awake()
     {
-        
+        tilemap = GetComponentInParent<Tilemap>();
+        transform.position = GetComponentInParent<GridLayout>().CellToWorld(CellPosition)+Vector3.one*0.55f;  
     }
 
     public void PlantSeed(Pickable newSeed)
@@ -36,7 +42,7 @@ public class Field : MonoBehaviour
             StartCoroutine(GrowthRoutine(seed.growthTime));
             bucket.fillingRate = 0;
             bucket.UpdateFillingRate();
-            transform.GetChild(0).gameObject.SetActive(true);
+            tilemap.SetTile(CellPosition, wateredTile);
         }
     }
 
@@ -44,7 +50,6 @@ public class Field : MonoBehaviour
     {
         if (seed == null)
             return;
-        transform.GetChild(0).gameObject.SetActive(false);
         Destroy(seed.gameObject);
         Pumpkin instance = Instantiate(pumpkin);
         instance.point = seed.point;
@@ -54,6 +59,7 @@ public class Field : MonoBehaviour
         instance.transform.localScale = Vector3.one * seed.size / 100;
         instance.transform.position = transform.position;
         seed = null;
+        tilemap.SetTile(CellPosition, normalTile);
         ChangeState();
     }
 
