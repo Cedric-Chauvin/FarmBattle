@@ -13,6 +13,17 @@ public class Player : MonoBehaviour
     public float stunTime;
     public TEAM team;
 
+    private enum ANIM
+    {
+        IDLE,
+        TOP,
+        BOTTOM,
+        LEFT,
+        RIGHT,
+        HIT,
+        STUNNED
+    }
+
     public enum TEAM
     {
         TEAM1,
@@ -36,12 +47,14 @@ public class Player : MonoBehaviour
     private Vector2 moveVector;
     private float speedMalus = 0;
     private Rigidbody2D rigidbody;
+    private Animator animator;
 
     void Awake()
     {
         // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
         player = ReInput.players.GetPlayer(playerId);
         rigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -69,14 +82,49 @@ public class Player : MonoBehaviour
             if (moveX != 0 || moveY != 0)
             {
                 if (moveY >= 0)
-                    transform.rotation = Quaternion.Euler(0, 0, Vector2.Angle(Vector2.right, new Vector2(moveX, moveY)));
+                    transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, Vector2.Angle(Vector2.right, new Vector2(moveX, moveY)));
                 else
-                    transform.rotation = Quaternion.Euler(0, 0, -Vector2.Angle(Vector2.right, new Vector2(moveX, moveY)));
+                    transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, -Vector2.Angle(Vector2.right, new Vector2(moveX, moveY)));
             }
             if (player.GetButtonDown("Action"))
                 Action();
             if (player.GetButtonDown("Hit") && isHolding && item.type == Pickable.TYPE.BAT)
                 TryHit();
+            AnimatorManager(moveX, moveY);
+        }
+    }
+
+    private void AnimatorManager(float moveX, float moveY)
+    {
+        if (moveX == 0 && moveY == 0)
+            animator.SetInteger("direction", Convert.ToInt32(ANIM.IDLE));
+        else if (moveX >= 0 && moveY >= 0)
+        {
+            if (moveX >= moveY)
+                animator.SetInteger("direction", Convert.ToInt32(ANIM.RIGHT));
+            else
+                animator.SetInteger("direction", Convert.ToInt32(ANIM.TOP));
+        }
+        else if (moveX >= 0 && moveY <= 0)
+        {
+            if (moveX >= Mathf.Abs(moveY))
+                animator.SetInteger("direction", Convert.ToInt32(ANIM.RIGHT));
+            else
+                animator.SetInteger("direction", Convert.ToInt32(ANIM.BOTTOM));
+        }
+        else if (moveX <= 0 && moveY >= 0)
+        {
+            if (Mathf.Abs(moveX) >= moveY)
+                animator.SetInteger("direction", Convert.ToInt32(ANIM.LEFT));
+            else
+                animator.SetInteger("direction", Convert.ToInt32(ANIM.TOP));
+        }
+        else if (moveX <= 0 && moveY <= 0)
+        {
+            if (Mathf.Abs(moveX) >= Mathf.Abs(moveY))
+                animator.SetInteger("direction", Convert.ToInt32(ANIM.LEFT));
+            else
+                animator.SetInteger("direction", Convert.ToInt32(ANIM.BOTTOM));
         }
     }
 
@@ -90,7 +138,7 @@ public class Player : MonoBehaviour
             return;
         }
         Debug.Log("Action");
-        RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).position, transform.GetChild(0).position-transform.position, pickDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).transform.GetChild(0).position, transform.GetChild(0).transform.GetChild(0).position-transform.position, pickDistance);
         if(hit && hit.transform.tag == "Pickable")
         {
             item = hit.transform.GetComponent<Pickable>();
@@ -109,7 +157,7 @@ public class Player : MonoBehaviour
     private void TryHit()
     {
         Debug.Log("Hit");
-        RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).position, transform.GetChild(0).position - transform.position, pickDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).transform.GetChild(0).position, transform.GetChild(0).transform.GetChild(0).position - transform.position, pickDistance);
         Player player = hit && hit.transform.tag == "Player" ? hit.transform.GetComponent<Player>() : null;
         if (player != null && player.team != team)
         {
