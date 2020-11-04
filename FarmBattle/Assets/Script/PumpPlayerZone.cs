@@ -47,6 +47,7 @@ public class PumpPlayerZone : MonoBehaviour
             {
                 if (canPump && pumpBucketZone.bucket)
                 {
+                    pumpBucketZone.isPumping = true;
                     canPump = false;
                     pumpBucketZone.bucket.FillBucket();
                     StartCoroutine(PumpCooldown());
