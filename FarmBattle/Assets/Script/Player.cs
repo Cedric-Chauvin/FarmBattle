@@ -127,6 +127,8 @@ public class Player : MonoBehaviour
 
     public void RemoveItem()
     {
+        if (!item)
+            return;
         item.rigidbody.simulated = true;
         item.transform.parent = null;
         OnRelease?.Invoke(item);

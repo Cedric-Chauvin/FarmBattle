@@ -23,6 +23,7 @@ public class Field : MonoBehaviour
         seed.rigidbody.simulated = false;
         seed.transform.parent = this.transform;
         seed.transform.localPosition = Vector3.zero;
+        ChangeState();
     }
 
     public void PutWater(Pickable newSeed)
@@ -34,11 +35,16 @@ public class Field : MonoBehaviour
         {
             StartCoroutine(GrowthRoutine(seed.growthTime));
             bucket.fillingRate = 0;
+            bucket.UpdateFillingRate();
+            transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 
     private void SpawnPumpkin()
     {
+        if (seed == null)
+            return;
+        transform.GetChild(0).gameObject.SetActive(false);
         Destroy(seed.gameObject);
         Pumpkin instance = Instantiate(pumpkin);
         instance.point = seed.point;
@@ -47,6 +53,8 @@ public class Field : MonoBehaviour
         instance.speedMalus = seed.pumpkinMalus;
         instance.transform.localScale = Vector3.one * seed.size / 100;
         instance.transform.position = transform.position;
+        seed = null;
+        ChangeState();
     }
 
     private IEnumerator GrowthRoutine(float time)
