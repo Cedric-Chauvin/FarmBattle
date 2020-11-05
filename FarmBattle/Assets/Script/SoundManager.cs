@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
 {
-    public Sound[] fx;
-    public Sound[] ambient;
+    public Sounds[] voices;
+    public Sounds[] fx;
+    //public Sound[] ambient;
     public Sound[] music;
     public int startMusicIndex;
 
+    private string lastVoice;
     private static SoundManager _instance;
     public static SoundManager Instance
     {
@@ -17,6 +20,11 @@ public class SoundManager : MonoBehaviour
         {
             return _instance;
         }
+    }
+
+    private void OnDestroy()
+    {
+        _instance = null;
     }
 
     private void Awake()
@@ -31,7 +39,31 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        foreach (Sound s in fx)
+        foreach (Sounds ss in voices)
+        {
+            foreach (Sound s in ss.sounds)
+            {
+                s.source = gameObject.AddComponent<AudioSource>();
+                s.source.clip = s.clip;
+                s.source.outputAudioMixerGroup = s.mixer;
+                s.source.volume = s.volume;
+                s.source.pitch = s.pitch;
+                s.source.loop = s.loop;
+            }
+        }
+        foreach (Sounds ss in fx)
+        {
+            foreach (Sound s in ss.sounds)
+            {
+                s.source = gameObject.AddComponent<AudioSource>();
+                s.source.clip = s.clip;
+                s.source.outputAudioMixerGroup = s.mixer;
+                s.source.volume = s.volume;
+                s.source.pitch = s.pitch;
+                s.source.loop = s.loop;
+            }
+        }
+        /*foreach (Sound s in ambient)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
@@ -39,16 +71,7 @@ public class SoundManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
-        }
-        foreach (Sound s in ambient)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.outputAudioMixerGroup = s.mixer;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
-        }
+        }*/
         foreach (Sound s in music)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -68,65 +91,56 @@ public class SoundManager : MonoBehaviour
         music[startMusicIndex].source.Play();
     }
 
-    public void Play(string name)
+    public float PlaySound(string name)
     {
-        Sound s = Array.Find(fx, sound => sound.name == name);
+        Sounds s = Array.Find(fx, sounds => sounds.name == name);
         if (s == null)
         {
-            s = Array.Find(ambient, sound => sound.name == name);
+            s = Array.Find(voices, sounds => sounds.name == name);
             if (s == null)
             {
-
-                Debug.Log("Sound" + name + "not found");
-                return;
+                Debug.LogError("Sound" + name + "not found");
+                return 0;
             }
         }
-        s.source.Play();
+        int index = Random.Range(0, s.sounds.Length);
+        return s.PlaySound(index);
     }
 
     public void StopSound(string name)
     {
-        Sound s = Array.Find(fx, sound => sound.name == name);
+        Sounds s = Array.Find(fx, sound => sound.name == name);
         if (s == null)
         {
-            s = Array.Find(ambient, sound => sound.name == name);
+            s = Array.Find(voices, sounds => sounds.name == name);
             if (s == null)
+            {
+                Debug.LogError("Sound" + name + "not found");
                 return;
+            }
         }
 
-        s.source.Stop();
+        s.StopSound();
     }
 
     public bool isPlaying(string name)
     {
-        Sound s = Array.Find(fx, sound => sound.name == name);
-        if (s != null)
+        Sounds s = Array.Find(fx, sound => sound.name == name);
+        if (s == null)
         {
-            return s.source.isPlaying;
+            s = Array.Find(voices, sounds => sounds.name == name);
+            if (s == null)
+            {
+                Debug.LogError("Sound" + name + "not found");
+                return false;
+            }
         }
-        else
-            return false;
+        return s.IsPlaying();
     }
 
     public void CutSounds()
     {
-        foreach (Sound s in ambient)
-        {
-            s.source.Stop();
-        }
-        foreach(Sound s in ambient)
-        {
-            s.source.Stop();
-        }
         music[startMusicIndex].source.Stop();
-    }
-
-    public void PlayAmbiant()
-    {
-        foreach (Sound s in ambient)
-        {
-            s.source.Play();
-        }
     }
 
     public void changeMusicIndex(int index)

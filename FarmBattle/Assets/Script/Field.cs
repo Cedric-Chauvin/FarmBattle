@@ -8,6 +8,7 @@ public class Field : MonoBehaviour
     public Pumpkin pumpkin;
     public Vector3Int CellPosition;
     public TilesGroups tilesGroups;
+    public Player.TEAM team;
 
     private Seed seed = null;
     private List<Player> players = new List<Player>();
@@ -49,19 +50,21 @@ public class Field : MonoBehaviour
     {
         if (seed == null)
             return;
-        seed.destroy.Invoke();
+        seed.destroy?.Invoke();
         Destroy(seed.gameObject);
         Pumpkin instance = Instantiate(pumpkin);
         instance.point = seed.point;
         instance.rigidbody.mass = seed.mass;
         instance.rigidbody.drag = seed.mass;
         instance.speedMalus = seed.pumpkinMalus;
+        instance.team = team;
         instance.transform.localScale = Vector3.one * (seed.size / 100.0f)*2;
         instance.transform.position = transform.position;
         instance.GetComponent<SpriteRenderer>().sprite = seed.pumpkinSprite;
         seed = null;
         tilemap.SetTile(CellPosition, tilesGroups.normalTile);
         ChangeState();
+        GameManager.GetInstance.PlayVoice(team, "pousse");
     }
 
     private IEnumerator GrowthRoutine(float time)

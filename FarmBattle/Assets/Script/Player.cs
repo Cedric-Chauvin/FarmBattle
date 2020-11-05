@@ -154,6 +154,8 @@ public class Player : MonoBehaviour
             isHolding = true;
             speedMalus = item.speedMalus / 100.0f;
             item.rigidbody.simulated = false;
+            if (item.type == Pickable.TYPE.PUMPKIN)
+                (item as Pumpkin).Steal(team);
         }
         else if (isOnPump)
         {
@@ -169,6 +171,7 @@ public class Player : MonoBehaviour
         if (player != null && player.team != team)
         {
             player.Stunned();
+            GameManager.GetInstance.PlayVoice(playerId, "hit");
         }
         item = null;
         isHolding = false;
@@ -193,9 +196,33 @@ public class Player : MonoBehaviour
         speedMalus = 0;
     }
 
+    private Coroutine bubbleCoroutine = null;
+
+    public void ActivateBubble(float time)
+    {
+        transform.GetChild(1).gameObject.SetActive(true);
+        bubbleCoroutine = StartCoroutine(BubbleRoutine(time));
+    }
+
+    public void DesactivateBubble()
+    {
+        if (bubbleCoroutine != null)
+            StopCoroutine(bubbleCoroutine);
+        transform.GetChild(1).gameObject.SetActive(false);
+        bubbleCoroutine = null;
+    }
+
+    IEnumerator BubbleRoutine(float time)
+    {
+        yield return new WaitForSeconds(time);
+        bubbleCoroutine = null;
+        DesactivateBubble();
+    }
+
     IEnumerator StunRoutine()
     {
         yield return new WaitForSeconds(stunTime);
         isStunned = false;
+        GameManager.GetInstance.PlayVoice(playerId, "get-hit");
     }
 }

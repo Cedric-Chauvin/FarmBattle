@@ -1,0 +1,156 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7198502870492905307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7198502870492905253}
+  - component: {fileID: 7198502870492905252}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7198502870492905253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7198502870492905307}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.701621, y: -1.1733449, z: -6.5354652}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7198502870492905252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7198502870492905307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c36191bda2c8b034ea78585b759d89b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voices:
+  - name: trump-pousse
+    sounds:
+    - name: trump-pousse
+      clip: {fileID: 8300000, guid: 0488ce81ea0ea494c9b310fe956d8650, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  - name: trump-voler
+    sounds:
+    - name: trump-voler
+      clip: {fileID: 8300000, guid: f993163fda6c6d549ad47a30b59a4ff9, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+    - name: trump-voler
+      clip: {fileID: 8300000, guid: 11a592e39c6399049a7dbfbf157e59d6, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  - name: trump-hit
+    sounds:
+    - name: trump-hit
+      clip: {fileID: 8300000, guid: 59b1082bb8efa5e4d9eb41eb0b228188, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+    - name: trump-hit
+      clip: {fileID: 8300000, guid: 532e623de528b6944b98132dde8bd0e6, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  - name: trump-get-hit
+    sounds:
+    - name: trump-get-hit
+      clip: {fileID: 8300000, guid: 17daee629fe838541945ac10210a48d8, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  - name: biden-pousse
+    sounds:
+    - name: biden-pousse
+      clip: {fileID: 8300000, guid: 98c805283f1491e4cb44a46550e0a770, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  - name: biden-voler
+    sounds:
+    - name: biden-voler
+      clip: {fileID: 8300000, guid: ee4710d1b3a347e4395533bbc0ace3c7, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+    - name: biden-voler
+      clip: {fileID: 8300000, guid: e9f1b5022accfd74f927a3eaf948ea83, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  - name: biden-hit
+    sounds:
+    - name: biden-hit
+      clip: {fileID: 8300000, guid: 1a40384d94cb3304eb794907c9ae0114, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+    - name: biden-hit
+      clip: {fileID: 8300000, guid: 1cd13a1d700e7d346957696ea0de6698, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  - name: biden-get-hit
+    sounds:
+    - name: biden-get-hit
+      clip: {fileID: 8300000, guid: 66cb6a3eaf50f324897cf52a33ba390c, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  fx: []
+  music:
+  - name: Music
+    clip: {fileID: 8300000, guid: 426e10e9df28ed64a9e17443af6bc7e3, type: 3}
+    mixer: {fileID: 984513966253675599, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+    pitch: 1
+    volume: 1
+    loop: 1
+    source: {fileID: 0}
+  startMusicIndex: 0
