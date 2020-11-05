@@ -35,6 +35,7 @@ public class ValidationArea : MonoBehaviour
                 player.item.UseObject(player.team);
                 Destroy(player.item.gameObject);
                 player.RemoveItem();
+                GameManager.GetInstance.PlayVoice(team, "success");
             }
         }
     }

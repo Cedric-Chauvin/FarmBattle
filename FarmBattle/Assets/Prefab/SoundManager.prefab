@@ -144,6 +144,100 @@ MonoBehaviour:
       volume: 1
       loop: 0
       source: {fileID: 0}
+  - name: biden-start
+    sounds:
+    - name: biden-start
+      clip: {fileID: 8300000, guid: 332eba33940735d47a641ed906350ac3, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  - name: trump-start
+    sounds:
+    - name: trump-start
+      clip: {fileID: 8300000, guid: a7b4421ade4ad964b9edd53b530a9753, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  - name: success
+    sounds:
+    - name: success
+      clip: {fileID: 8300000, guid: b37ddf7ced9968e498426dcb70caaa49, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+    - name: success
+      clip: {fileID: 8300000, guid: 02064de9f59e19847acb51ac0b5f2aa8, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+    - name: success
+      clip: {fileID: 8300000, guid: 257a3d77ce4a011468e6aa6af5294588, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+    - name: success
+      clip: {fileID: 8300000, guid: cb39119a30ad16848a5796f1e4c52f2b, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+    - name: success
+      clip: {fileID: 8300000, guid: 9376b2f98a94de947b25edcf48c0d7b6, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+    - name: success
+      clip: {fileID: 8300000, guid: 4df7e0d64d4cdb74b8e8516c725c03ac, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  - name: biden-invade
+    sounds:
+    - name: biden-invade
+      clip: {fileID: 8300000, guid: cb8fd2f2767536b4abbb8bf7495dfdbc, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+    - name: biden-invade
+      clip: {fileID: 8300000, guid: 2e8d4709b1da3e441a81a0f1e2430cf3, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  - name: trump-invade
+    sounds:
+    - name: trump-invade
+      clip: {fileID: 8300000, guid: 56a853e3f51165246915d35699a82e35, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+    - name: trump-invade
+      clip: {fileID: 8300000, guid: 876f6119983f9c44fab541f071c04006, type: 3}
+      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
   fx: []
   music:
   - name: Music

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,15 +27,24 @@ public class GameManager : MonoBehaviour
     {
         instance = null;
     }
-    public static GameManager GetInstance => instance; 
+    public static GameManager GetInstance => instance;
+
+    private void Start()
+    {
+        PlayVoice(Player.TEAM.TEAM1, "start");
+        Invoke("BidenReply", 4f);
+    }
+
+    private void BidenReply()
+    {
+        PlayVoice(Player.TEAM.TEAM2, "start");
+    }
+
 
     public void PlayVoice(Player.TEAM team,string name)
     {
-        if(lastVoice != "" && SoundManager.Instance.isPlaying(lastVoice))
-        {
-            SoundManager.Instance.StopSound(lastVoice);
-            lastPlayer.DesactivateBubble();
-        }
+        if (!CanPlay())
+            return;
         int index;
         if (team == Player.TEAM.TEAM1)
             index = Random.Range(1, 3);
@@ -44,22 +54,37 @@ public class GameManager : MonoBehaviour
             if (index == 1)
                 index += 2;
         }
-        lastVoice = team == Player.TEAM.TEAM1 ? "trump-" + name : "biden-" + name;
-        float time = SoundManager.Instance.PlaySound(lastVoice);
-        players[index].ActivateBubble(time);
-        lastPlayer = players[index];
+        PlaySound(players[index], name);
     }
     public void PlayVoice(int id,string name)
     {
+        if (!CanPlay())
+            return;
+        Player p = players.First(x => x.playerId == id);
+        PlaySound(p, name);
+    }
+
+    private bool CanPlay()
+    {
         if (lastVoice != "" && SoundManager.Instance.isPlaying(lastVoice))
         {
+
+            if (lastVoice == "success")
+                return false;
             SoundManager.Instance.StopSound(lastVoice);
             lastPlayer.DesactivateBubble();
         }
-        Player p = players.First(x => x.playerId == id);
-        lastVoice = p.team == Player.TEAM.TEAM1 ? "trump-" + name : "biden-" + name;
+        return true;
+    }
+    private void PlaySound(Player p,string name)
+    {
+        if (name == "success")
+            lastVoice = name;
+        else
+            lastVoice = p.team == Player.TEAM.TEAM1 ? "trump-" + name : "biden-" + name;
         float time = SoundManager.Instance.PlaySound(lastVoice);
-        p.ActivateBubble(time);
+        if (name != "success")
+            p.ActivateBubble(time);
         lastPlayer = p;
     }
 }
