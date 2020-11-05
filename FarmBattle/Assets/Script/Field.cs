@@ -30,6 +30,7 @@ public class Field : MonoBehaviour
         seed.transform.parent = this.transform;
         seed.transform.localPosition = Vector3.zero;
         ChangeState();
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void PutWater(Pickable newSeed)
@@ -43,6 +44,8 @@ public class Field : MonoBehaviour
             bucket.fillingRate = 0;
             tilemap.SetTile(CellPosition, tilesGroups.wateredTile);
             seed.ChangeState();
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 
@@ -65,6 +68,7 @@ public class Field : MonoBehaviour
         tilemap.SetTile(CellPosition, tilesGroups.normalTile);
         ChangeState();
         GameManager.GetInstance.PlayVoice(team, "pousse");
+        transform.GetChild(1).gameObject.SetActive(false);
     }
 
     private IEnumerator GrowthRoutine(float time)
