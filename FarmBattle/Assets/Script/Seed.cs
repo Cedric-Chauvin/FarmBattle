@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ public class Seed : Pickable
     public int pumpkinMalus = 50;
     public Sprite pumpkinSprite;
     public Sprite growSprite;
+    public Action destroy;
 
     public void ChangeState()
     {

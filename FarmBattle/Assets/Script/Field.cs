@@ -49,6 +49,7 @@ public class Field : MonoBehaviour
     {
         if (seed == null)
             return;
+        seed.destroy.Invoke();
         Destroy(seed.gameObject);
         Pumpkin instance = Instantiate(pumpkin);
         instance.point = seed.point;
