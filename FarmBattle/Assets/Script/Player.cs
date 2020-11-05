@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
         if(hit && hit.transform.tag == "Pickable")
         {
             item = hit.transform.GetComponent<Pickable>();
-            item.transform.parent = transform.GetChild(0);
+            item.transform.parent = transform;
             item.transform.localPosition = Vector3.zero;
             isHolding = true;
             speedMalus = item.speedMalus / 100.0f;
