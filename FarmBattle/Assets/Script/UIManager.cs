@@ -7,8 +7,8 @@ public class UIManager : MonoBehaviour
 {
     private static UIManager instance;
 
-    public TMPro.TextMeshProUGUI team1Score;
-    public TMPro.TextMeshProUGUI team2Score;
+    public Text team1Score;
+    public Text team2Score;
 
 
     private void Awake()
