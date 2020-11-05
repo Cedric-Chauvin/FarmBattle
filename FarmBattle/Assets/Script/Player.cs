@@ -21,7 +21,8 @@ public class Player : MonoBehaviour
         LEFT,
         RIGHT,
         HIT,
-        STUNNED
+        STUNNED,
+        BAT
     }
 
     public enum TEAM
@@ -103,35 +104,45 @@ public class Player : MonoBehaviour
 
     private void AnimatorManager(float moveX, float moveY)
     {
-        if (moveX == 0 && moveY == 0)
-            animator.SetInteger("status", Convert.ToInt32(ANIM.IDLE));
-        else if (moveX >= 0 && moveY >= 0)
+        animator.SetFloat("MoveX", moveX);
+        animator.SetFloat("MoveY", moveY);
+
+        if (item && item.type == Pickable.TYPE.BAT)
         {
-            if (moveX >= moveY)
-                animator.SetInteger("status", Convert.ToInt32(ANIM.RIGHT));
-            else
-                animator.SetInteger("status", Convert.ToInt32(ANIM.TOP));
+            animator.SetInteger("status", Convert.ToInt32(ANIM.BAT));
         }
-        else if (moveX >= 0 && moveY <= 0)
+        else
         {
-            if (moveX >= Mathf.Abs(moveY))
-                animator.SetInteger("status", Convert.ToInt32(ANIM.RIGHT));
-            else
-                animator.SetInteger("status", Convert.ToInt32(ANIM.BOTTOM));
-        }
-        else if (moveX <= 0 && moveY >= 0)
-        {
-            if (Mathf.Abs(moveX) >= moveY)
-                animator.SetInteger("status", Convert.ToInt32(ANIM.LEFT));
-            else
-                animator.SetInteger("status", Convert.ToInt32(ANIM.TOP));
-        }
-        else if (moveX <= 0 && moveY <= 0)
-        {
-            if (Mathf.Abs(moveX) >= Mathf.Abs(moveY))
-                animator.SetInteger("status", Convert.ToInt32(ANIM.LEFT));
-            else
-                animator.SetInteger("status", Convert.ToInt32(ANIM.BOTTOM));
+            if (moveX == 0 && moveY == 0)
+                animator.SetInteger("status", Convert.ToInt32(ANIM.IDLE));
+            else if (moveX >= 0 && moveY >= 0)
+            {
+                if (moveX >= moveY)
+                    animator.SetInteger("status", Convert.ToInt32(ANIM.RIGHT));
+                else
+                    animator.SetInteger("status", Convert.ToInt32(ANIM.TOP));
+            }
+            else if (moveX >= 0 && moveY <= 0)
+            {
+                if (moveX >= Mathf.Abs(moveY))
+                    animator.SetInteger("status", Convert.ToInt32(ANIM.RIGHT));
+                else
+                    animator.SetInteger("status", Convert.ToInt32(ANIM.BOTTOM));
+            }
+            else if (moveX <= 0 && moveY >= 0)
+            {
+                if (Mathf.Abs(moveX) >= moveY)
+                    animator.SetInteger("status", Convert.ToInt32(ANIM.LEFT));
+                else
+                    animator.SetInteger("status", Convert.ToInt32(ANIM.TOP));
+            }
+            else if (moveX <= 0 && moveY <= 0)
+            {
+                if (Mathf.Abs(moveX) >= Mathf.Abs(moveY))
+                    animator.SetInteger("status", Convert.ToInt32(ANIM.LEFT));
+                else
+                    animator.SetInteger("status", Convert.ToInt32(ANIM.BOTTOM));
+            }
         }
     }
 
