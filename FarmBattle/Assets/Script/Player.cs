@@ -181,6 +181,8 @@ public class Player : MonoBehaviour
     private void TryHit()
     {
         Debug.Log("Hit");
+        animator.SetTrigger("Hit");
+        animator.SetInteger("status", Convert.ToInt32(ANIM.HIT));
         RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).GetChild(0).position, transform.GetChild(0).GetChild(0).position - transform.position, pickDistance);
         Player player = hit && hit.transform.tag == "Player" ? hit.transform.GetComponent<Player>() : null;
         if (player != null && player.team != team)
