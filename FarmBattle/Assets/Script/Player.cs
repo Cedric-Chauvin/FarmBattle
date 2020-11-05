@@ -92,6 +92,11 @@ public class Player : MonoBehaviour
                 TryHit();
             AnimatorManager(moveX, moveY);
         }
+        else
+        {
+            rigidbody.velocity = new Vector3(0, 0, 0);
+            animator.SetInteger("direction", Convert.ToInt32(ANIM.STUNNED));
+        }
     }
 
     private void AnimatorManager(float moveX, float moveY)
