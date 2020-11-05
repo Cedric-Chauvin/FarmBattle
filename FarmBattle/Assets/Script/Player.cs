@@ -98,6 +98,7 @@ public class Player : MonoBehaviour
             animator.SetInteger("direction", Convert.ToInt32(ANIM.STUNNED));
         }
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+        transform.GetChild(0).GetChild(0).position = new Vector3(transform.GetChild(0).GetChild(0).position.x, transform.GetChild(0).GetChild(0).position.y, transform.GetChild(0).GetChild(0).position.y);
     }
 
     private void AnimatorManager(float moveX, float moveY)
@@ -144,7 +145,7 @@ public class Player : MonoBehaviour
             return;
         }
         Debug.Log("Action");
-        RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).transform.GetChild(0).position, transform.GetChild(0).transform.GetChild(0).position-transform.position, pickDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).GetChild(0).position, transform.GetChild(0).GetChild(0).position-transform.position, pickDistance);
         if(hit && hit.transform.tag == "Pickable")
         {
             item = hit.transform.GetComponent<Pickable>();
@@ -163,7 +164,7 @@ public class Player : MonoBehaviour
     private void TryHit()
     {
         Debug.Log("Hit");
-        RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).transform.GetChild(0).position, transform.GetChild(0).transform.GetChild(0).position - transform.position, pickDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).GetChild(0).position, transform.GetChild(0).GetChild(0).position - transform.position, pickDistance);
         Player player = hit && hit.transform.tag == "Player" ? hit.transform.GetComponent<Player>() : null;
         if (player != null && player.team != team)
         {
