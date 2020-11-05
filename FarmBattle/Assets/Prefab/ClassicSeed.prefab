@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1678406206472170887}
   - component: {fileID: 1678406206472170883}
   m_Layer: 0
-  m_Name: Seed
+  m_Name: ClassicSeed
   m_TagString: Pickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,6 +106,7 @@ MonoBehaviour:
   growthTime: 5
   pumpkinMalus: 50
   pumpkinSprite: {fileID: 21300000, guid: 2c5829aa9eb18624f99a47680b1f8ea4, type: 3}
+  plantSprite: {fileID: 21300000, guid: 3ee3ad0d62c00ae42a38e3d32f853399, type: 3}
   growSprite: {fileID: 21300000, guid: 8b8edceddf8ad6a4da8c3cc69d33b93b, type: 3}
 --- !u!58 &1678406206472170887
 CircleCollider2D:

@@ -106,6 +106,7 @@ MonoBehaviour:
   growthTime: 5
   pumpkinMalus: 70
   pumpkinSprite: {fileID: 21300000, guid: a40da6f6b50e8794987ad4e0be5e9965, type: 3}
+  plantSprite: {fileID: 21300000, guid: 1f7efe16aa72f9648842ecfd7f3441b5, type: 3}
   growSprite: {fileID: 21300000, guid: 9e8491a2c59dd11479086615a5475985, type: 3}
 --- !u!58 &5588442943900221381
 CircleCollider2D:

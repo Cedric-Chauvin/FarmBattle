@@ -26,6 +26,7 @@ public class Field : MonoBehaviour
             return;
 
         seed = newSeed as Seed;
+        seed.ChangeState();
         seed.rigidbody.simulated = false;
         seed.transform.parent = this.transform;
         seed.transform.localPosition = Vector3.zero;

@@ -14,12 +14,21 @@ public class Seed : Pickable
     [Range(0, 100)]
     public int pumpkinMalus = 50;
     public Sprite pumpkinSprite;
+    public Sprite plantSprite;
     public Sprite growSprite;
     public Action destroy;
 
+    private bool first = true;
+
     public void ChangeState()
     {
-        spriteRenderer.sprite = growSprite;
+        if (first)
+        {
+            spriteRenderer.sprite = plantSprite;
+            first = false;
+        }
+        else
+            spriteRenderer.sprite = growSprite;
     }
 
     public void Update()
