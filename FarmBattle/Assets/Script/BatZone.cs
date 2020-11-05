@@ -17,6 +17,7 @@ public class BatZone : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
     }
 
     private void OnTriggerStay2D(Collider2D collision)

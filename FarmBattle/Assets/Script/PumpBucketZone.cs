@@ -14,6 +14,7 @@ public class PumpBucketZone : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

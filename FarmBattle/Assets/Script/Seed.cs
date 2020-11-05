@@ -20,4 +20,9 @@ public class Seed : Pickable
         spriteRenderer.sprite = growSprite;
     }
 
+    public void Update()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+    }
+
 }

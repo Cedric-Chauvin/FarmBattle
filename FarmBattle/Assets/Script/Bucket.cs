@@ -41,5 +41,6 @@ public class Bucket : Pickable
             spriteRenderer.sprite = bucketFull;
             spriteChanged = false;
         }
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
     }
 }
