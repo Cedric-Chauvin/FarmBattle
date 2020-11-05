@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
         else
         {
             rigidbody.velocity = new Vector3(0, 0, 0);
-            animator.SetInteger("direction", Convert.ToInt32(ANIM.STUNNED));
+            animator.SetInteger("status", Convert.ToInt32(ANIM.STUNNED));
         }
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
         transform.GetChild(0).GetChild(0).position = new Vector3(transform.GetChild(0).GetChild(0).position.x, transform.GetChild(0).GetChild(0).position.y, transform.GetChild(0).GetChild(0).position.y);
@@ -104,34 +104,34 @@ public class Player : MonoBehaviour
     private void AnimatorManager(float moveX, float moveY)
     {
         if (moveX == 0 && moveY == 0)
-            animator.SetInteger("direction", Convert.ToInt32(ANIM.IDLE));
+            animator.SetInteger("status", Convert.ToInt32(ANIM.IDLE));
         else if (moveX >= 0 && moveY >= 0)
         {
             if (moveX >= moveY)
-                animator.SetInteger("direction", Convert.ToInt32(ANIM.RIGHT));
+                animator.SetInteger("status", Convert.ToInt32(ANIM.RIGHT));
             else
-                animator.SetInteger("direction", Convert.ToInt32(ANIM.TOP));
+                animator.SetInteger("status", Convert.ToInt32(ANIM.TOP));
         }
         else if (moveX >= 0 && moveY <= 0)
         {
             if (moveX >= Mathf.Abs(moveY))
-                animator.SetInteger("direction", Convert.ToInt32(ANIM.RIGHT));
+                animator.SetInteger("status", Convert.ToInt32(ANIM.RIGHT));
             else
-                animator.SetInteger("direction", Convert.ToInt32(ANIM.BOTTOM));
+                animator.SetInteger("status", Convert.ToInt32(ANIM.BOTTOM));
         }
         else if (moveX <= 0 && moveY >= 0)
         {
             if (Mathf.Abs(moveX) >= moveY)
-                animator.SetInteger("direction", Convert.ToInt32(ANIM.LEFT));
+                animator.SetInteger("status", Convert.ToInt32(ANIM.LEFT));
             else
-                animator.SetInteger("direction", Convert.ToInt32(ANIM.TOP));
+                animator.SetInteger("status", Convert.ToInt32(ANIM.TOP));
         }
         else if (moveX <= 0 && moveY <= 0)
         {
             if (Mathf.Abs(moveX) >= Mathf.Abs(moveY))
-                animator.SetInteger("direction", Convert.ToInt32(ANIM.LEFT));
+                animator.SetInteger("status", Convert.ToInt32(ANIM.LEFT));
             else
-                animator.SetInteger("direction", Convert.ToInt32(ANIM.BOTTOM));
+                animator.SetInteger("status", Convert.ToInt32(ANIM.BOTTOM));
         }
     }
 
@@ -149,9 +149,11 @@ public class Player : MonoBehaviour
         if(hit && hit.transform.tag == "Pickable")
         {
             item = hit.transform.GetComponent<Pickable>();
-            item.transform.parent = transform;
+            item.transform.parent = transform.GetChild(2);
             item.transform.localPosition = Vector3.zero;
+            item.isHolding = true;
             isHolding = true;
+            animator.SetBool("isHolding", isHolding);
             speedMalus = item.speedMalus / 100.0f;
             item.rigidbody.simulated = false;
             if (item.type == Pickable.TYPE.PUMPKIN)
@@ -190,9 +192,11 @@ public class Player : MonoBehaviour
             return;
         item.rigidbody.simulated = true;
         item.transform.parent = null;
+        item.isHolding = false;
         OnRelease?.Invoke(item);
         item = null;
         isHolding = false;
+        animator.SetBool("isHolding", isHolding);
         speedMalus = 0;
     }
 

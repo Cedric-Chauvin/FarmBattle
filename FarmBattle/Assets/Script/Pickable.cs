@@ -10,6 +10,8 @@ public class Pickable : MonoBehaviour
 
     [HideInInspector]
     public Rigidbody2D rigidbody = null;
+    [HideInInspector]
+    public bool isHolding = false;
 
     protected SpriteRenderer spriteRenderer;
 

@@ -17,7 +17,8 @@ public class Pumpkin : Pickable
 
     private void Update()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+        if (!isHolding)
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
     }
 
     public void Steal(Player.TEAM pTeam)
