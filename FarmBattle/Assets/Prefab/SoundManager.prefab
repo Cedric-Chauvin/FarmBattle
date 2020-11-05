@@ -166,42 +166,42 @@ MonoBehaviour:
     sounds:
     - name: success
       clip: {fileID: 8300000, guid: b37ddf7ced9968e498426dcb70caaa49, type: 3}
-      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      mixer: {fileID: 4686908126462071946, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
       pitch: 1
       volume: 1
       loop: 0
       source: {fileID: 0}
     - name: success
       clip: {fileID: 8300000, guid: 02064de9f59e19847acb51ac0b5f2aa8, type: 3}
-      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      mixer: {fileID: 4686908126462071946, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
       pitch: 1
       volume: 1
       loop: 0
       source: {fileID: 0}
     - name: success
       clip: {fileID: 8300000, guid: 257a3d77ce4a011468e6aa6af5294588, type: 3}
-      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      mixer: {fileID: 4686908126462071946, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
       pitch: 1
       volume: 1
       loop: 0
       source: {fileID: 0}
     - name: success
       clip: {fileID: 8300000, guid: cb39119a30ad16848a5796f1e4c52f2b, type: 3}
-      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      mixer: {fileID: 4686908126462071946, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
       pitch: 1
       volume: 1
       loop: 0
       source: {fileID: 0}
     - name: success
       clip: {fileID: 8300000, guid: 9376b2f98a94de947b25edcf48c0d7b6, type: 3}
-      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      mixer: {fileID: 4686908126462071946, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
       pitch: 1
       volume: 1
       loop: 0
       source: {fileID: 0}
     - name: success
       clip: {fileID: 8300000, guid: 4df7e0d64d4cdb74b8e8516c725c03ac, type: 3}
-      mixer: {fileID: 1039943176029016615, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      mixer: {fileID: 4686908126462071946, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
       pitch: 1
       volume: 1
       loop: 0
