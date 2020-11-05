@@ -19,26 +19,29 @@ public class PumpBucketZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Pickable"))
+        if (collision.CompareTag("Player"))
         {
-            Bucket b = collision.gameObject.GetComponent<Bucket>();
-            if (b && bucket == null)
-            {
-                bucket = b;
-            }
+            collision.GetComponent<Player>().OnRelease += OnPutBucket;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Pickable"))
+        if (collision.CompareTag("Player"))
         {
-            Bucket b = collision.gameObject.GetComponent<Bucket>();
-            if (b && bucket == b)
-            {
-                bucket = null;
-            }
+            collision.GetComponent<Player>().OnRelease -= OnPutBucket;
         }
+    }
+
+    private void OnPutBucket(Pickable pickable)
+    {
+        if (transform.GetChild(0).childCount == 0 && pickable.type!= Pickable.TYPE.BUCKET)
+            return;
+        Bucket b = pickable as Bucket;
+        b.transform.parent = transform.GetChild(0);
+        b.transform.position = Vector3.zero;
+        b.rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        bucket = b;
     }
 
     private void Update()

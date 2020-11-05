@@ -18,9 +18,8 @@ public class PumpPlayerZone : MonoBehaviour
         Player player = collision.GetComponent<Player>();
         if (player != null)
         {
-            players.Add(collision.GetComponent<Player>());
+            players.Add(player);
             player.isOnPump = true;
-            player.bucketToFill = pumpBucketZone.bucket;
         }
     }
 
@@ -31,9 +30,8 @@ public class PumpPlayerZone : MonoBehaviour
         Player player = collision.GetComponent<Player>();
         if (player != null)
         {
-            players.Remove(collision.GetComponent<Player>());
+            players.Remove(player);
             player.isOnPump = false;
-            player.bucketToFill = null;
         }
     }
 
@@ -41,11 +39,9 @@ public class PumpPlayerZone : MonoBehaviour
     {
         foreach (Player player in players)
         {
-            if (player.bucketToFill != null && player.bucketToFill != pumpBucketZone.bucket)
-                player.bucketToFill = pumpBucketZone.bucket;
             if (player.tryPump)
             {
-                if (canPump && pumpBucketZone.bucket)
+                if (canPump && pumpBucketZone.bucket && pumpBucketZone.transform.GetChild(0).childCount != 0)
                 {
                     pumpBucketZone.isPumping = true;
                     canPump = false;

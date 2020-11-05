@@ -158,6 +158,8 @@ public class Player : MonoBehaviour
             item.rigidbody.simulated = false;
             if (item.type == Pickable.TYPE.PUMPKIN)
                 (item as Pumpkin).Steal(team);
+            if (item.type == Pickable.TYPE.BUCKET)
+                item.rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         else if (isOnPump)
         {
