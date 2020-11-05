@@ -471,6 +471,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 77829696}
     m_Modifications:
+    - target: {fileID: 5958125197152401938, guid: 3ed32fd6553932144b93a25b1b78c63f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958125197152401938, guid: 3ed32fd6553932144b93a25b1b78c63f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958125197152401938, guid: 3ed32fd6553932144b93a25b1b78c63f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958125197152401938, guid: 3ed32fd6553932144b93a25b1b78c63f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958125197152401940, guid: 3ed32fd6553932144b93a25b1b78c63f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 57f5e70dbf12e7a4a98c515f88a543d6, type: 3}
+    - target: {fileID: 5958125197152401940, guid: 3ed32fd6553932144b93a25b1b78c63f, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958125197152401940, guid: 3ed32fd6553932144b93a25b1b78c63f, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958125197152401940, guid: 3ed32fd6553932144b93a25b1b78c63f, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5958125197268010064, guid: 3ed32fd6553932144b93a25b1b78c63f, type: 3}
       propertyPath: m_LinearDrag
       value: 0
