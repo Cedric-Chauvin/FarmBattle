@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator SpeakerRoutine(float time)
     {
         yield return new WaitForSeconds(time);
-        speaker2.SetBool("Active", false);
+        speaker1.SetBool("Active", false);
         speaker2.SetBool("Active", false);
     }
 }

@@ -1299,7 +1299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7a1141742868148b253f1cbf811407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScore: 27
+  maxScore: 10
   team1Score: {fileID: 23835768}
   team2Score: {fileID: 1826107321}
   demoPanel: {fileID: 625828638908155251}
