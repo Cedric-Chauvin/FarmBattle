@@ -213,10 +213,13 @@ public class Player : MonoBehaviour
             item = null;
             isHolding = false;
             speedMalus = 0;
+            SoundManager.Instance.PlaySound("batteBroke");
+            SoundManager.Instance.PlaySound("homeRun");
         }
         else
         {
             StartCoroutine(BatCooldown());
+            SoundManager.Instance.PlaySound("batteAttack");
         }
     }
 

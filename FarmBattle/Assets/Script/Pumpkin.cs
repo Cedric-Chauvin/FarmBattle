@@ -23,8 +23,11 @@ public class Pumpkin : Pickable
 
     public void Steal(Player.TEAM pTeam)
     {
-        if(pTeam!=team && first)
+        if (pTeam != team && first)
+        {
             GameManager.GetInstance.PlayVoice(team, "voler");
+            SoundManager.Instance.PlaySound("steal");
+        }
 
         first = false;
     }

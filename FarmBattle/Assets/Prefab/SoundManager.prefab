@@ -238,7 +238,43 @@ MonoBehaviour:
       volume: 1
       loop: 0
       source: {fileID: 0}
-  fx: []
+  fx:
+  - name: batteAttack
+    sounds:
+    - name: batteAttack
+      clip: {fileID: 8300000, guid: 5fddf80d1874ddd43a4f14690a98562f, type: 3}
+      mixer: {fileID: 3686163103831159877, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  - name: batteBroke
+    sounds:
+    - name: batteBroke
+      clip: {fileID: 8300000, guid: 2cc5c5664dc3ac74f9bcbd836257b656, type: 3}
+      mixer: {fileID: 3686163103831159877, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  - name: steal
+    sounds:
+    - name: steal
+      clip: {fileID: 8300000, guid: 34c91e5cbd0e8704f9ffa240bc065999, type: 3}
+      mixer: {fileID: 3686163103831159877, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 1
+      loop: 0
+      source: {fileID: 0}
+  - name: homeRun
+    sounds:
+    - name: homeRun
+      clip: {fileID: 8300000, guid: 1bb5161da62f04b4aa222dbe2cabbcee, type: 3}
+      mixer: {fileID: 3686163103831159877, guid: ed9a590016c1a9c43949ca86cf67100e, type: 2}
+      pitch: 1
+      volume: 0.2
+      loop: 0
+      source: {fileID: 0}
   music:
   - name: Music
     clip: {fileID: 8300000, guid: 426e10e9df28ed64a9e17443af6bc7e3, type: 3}
