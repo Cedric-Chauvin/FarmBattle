@@ -5,6 +5,7 @@ using UnityEngine;
 public class BatZone : MonoBehaviour
 {
     public Player.TEAM team;
+    public GameObject Cross;
 
     [Header("Bat parameters")]
     public Pickable bat;
@@ -13,6 +14,8 @@ public class BatZone : MonoBehaviour
     private bool batOnIt = true;
     private Player player = null;
     private Animator animator;
+
+    private bool batTaken = false;
 
     private void Awake()
     {
@@ -31,17 +34,32 @@ public class BatZone : MonoBehaviour
                 Debug.Log("Player take bat");
                 player.item = bat;
                 player.isHolding = true;
+                batTaken = true;
                 batOnIt = false;
                 animator.SetBool("Bat", batOnIt);
             }
+            else
+            {
+                player = null;
+                Cross.SetActive(true);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Cross.SetActive(false);
         }
     }
 
     private void Update()
     {
-        if (player && player.item == null)
+        if (player && player.item == null && batTaken)
         {
             player = null;
+            batTaken = false;
             StartCoroutine(BatCooldown());
         }
     }
