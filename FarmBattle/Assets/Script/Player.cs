@@ -247,7 +247,8 @@ public class Player : MonoBehaviour
     {
         if (!item)
             return;
-        item.rigidbody.simulated = true;
+        if(item.rigidbody!=null)
+            item.rigidbody.simulated = true;
         item.transform.parent = null;
         item.isHolding = false;
         OnRelease?.Invoke(item);
