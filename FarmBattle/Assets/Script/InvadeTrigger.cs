@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class InvadeTrigger : MonoBehaviour
 {
     public Player.TEAM team;
     public float cooldown;
 
-    private bool canTalk;
-    private void OnTriggerEnter(Collider other)
+    private bool canTalk = true;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player" && canTalk)
         {
-            GameManager.GetInstance.PlayVoice(team, "invade");
-            canTalk = false;
+            if (other.GetComponent<Player>().team != team)
+            {
+                GameManager.GetInstance.PlayVoice(team, "invade");
+                canTalk = false;
+                StartCoroutine(Routine());
+            }
         }
     }
 
