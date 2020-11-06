@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
 
     public Player[] players;
+    public Animator speaker1;
+    public Animator speaker2;
 
     private static int[] ID;
 
@@ -97,6 +99,19 @@ public class GameManager : MonoBehaviour
         float time = SoundManager.Instance.PlaySound(lastVoice);
         if (name != "success")
             p.ActivateBubble(time);
+        else
+        {
+            speaker1.SetBool("Active",true);
+            speaker2.SetBool("Active", true);
+            StartCoroutine(SpeakerRoutine(time));
+        }
         lastPlayer = p;
+    }
+
+    private IEnumerator SpeakerRoutine(float time)
+    {
+        yield return new WaitForSeconds(time);
+        speaker2.SetBool("Active", false);
+        speaker2.SetBool("Active", false);
     }
 }

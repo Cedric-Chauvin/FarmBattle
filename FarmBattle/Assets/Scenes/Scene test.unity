@@ -742,6 +742,8 @@ MonoBehaviour:
   - {fileID: 316248358622431372}
   - {fileID: 2474837522862062797}
   - {fileID: 3704804684022365188}
+  speaker1: {fileID: 1647945779}
+  speaker2: {fileID: 1509594882}
 --- !u!1 &84741618
 GameObject:
   m_ObjectHideFlags: 0
