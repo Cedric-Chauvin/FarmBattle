@@ -165,6 +165,10 @@ public class Player : MonoBehaviour
         }
         Debug.Log("Action");
         RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).GetChild(0).position, transform.GetChild(0).GetChild(0).position-transform.position, pickDistance);
+        if(!hit || hit.transform.tag != "Pickable")
+        {
+            hit = TryRaycast(pickDistance);
+        }
         if(hit && hit.transform.tag == "Pickable")
         {
             item = hit.transform.GetComponent<Pickable>();
@@ -192,6 +196,10 @@ public class Player : MonoBehaviour
         animator.SetTrigger("Hit");
         canHit = false;
         RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).GetChild(0).position, transform.GetChild(0).GetChild(0).position - transform.position, pickDistance);
+        if (!hit)
+        {
+            hit = TryRaycast(pickDistance);
+        }
         Player player = hit && hit.transform.tag == "Player" ? hit.transform.GetComponent<Player>() : null;
         if (player != null && player.team != team)
         {
@@ -205,6 +213,20 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(BatCooldown());
         }
+    }
+
+    private RaycastHit2D TryRaycast(float distance)
+    {
+        Transform startTransform = transform.GetChild(0).GetChild(0);
+        RaycastHit2D hit1 = Physics2D.Raycast(startTransform.position + startTransform.TransformDirection(Vector3.right * 0.1f), startTransform.position - transform.position, distance);
+        RaycastHit2D hit2 = Physics2D.Raycast(startTransform.position + startTransform.TransformDirection(Vector3.left * 0.1f), startTransform.position - transform.position, distance);
+        if (hit1 && hit2)
+            return hit1.distance > hit2.distance ? hit2 : hit1;
+        else if (hit1 && !hit2)
+            return hit1;
+        else if (!hit1 && hit2)
+            return hit2;
+        return new RaycastHit2D();
     }
 
     public void Stunned()

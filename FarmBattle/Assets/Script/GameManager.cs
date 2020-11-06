@@ -47,13 +47,9 @@ public class GameManager : MonoBehaviour
             return;
         int index;
         if (team == Player.TEAM.TEAM1)
-            index = Random.Range(1, 3);
-        else
-        {
             index = Random.Range(0, 2);
-            if (index == 1)
-                index += 2;
-        }
+        else
+            index = Random.Range(2, 4);
         PlaySound(players[index], name);
     }
     public void PlayVoice(int id,string name)
