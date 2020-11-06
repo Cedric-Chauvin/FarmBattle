@@ -198,7 +198,6 @@ public class Player : MonoBehaviour
 
     private void TryHit()
     {
-        Debug.Log("Hit");
         animator.SetTrigger("Hit");
         canHit = false;
         RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).GetChild(0).position, transform.GetChild(0).GetChild(0).position - transform.position, pickDistance);
@@ -209,6 +208,7 @@ public class Player : MonoBehaviour
         Player player = hit && hit.transform.tag == "Player" ? hit.transform.GetComponent<Player>() : null;
         if (player != null && player.team != team)
         {
+            Debug.Log("Hit");
             player.Stunned();
             GameManager.GetInstance.PlayVoice(playerId, "hit");
             item = null;
