@@ -63,6 +63,16 @@ public class GameManager : MonoBehaviour
         Player p = players.First(x => x.playerId == id);
         PlaySound(p, name);
     }
+    public void PlayVoice(int attackID,int targetID,string nameAttack,string nameTarget)
+    {
+        if (!CanPlay())
+            return;
+        if (Random.Range(0, 100) > 50)
+            PlaySound(players.First(x => x.playerId == attackID), nameAttack);
+        else
+            PlaySound(players.First(x => x.playerId == targetID), nameTarget);
+
+    }
 
     private bool CanPlay()
     {

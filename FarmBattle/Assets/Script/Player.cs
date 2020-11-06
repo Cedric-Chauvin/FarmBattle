@@ -209,7 +209,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Hit");
             player.Stunned();
-            GameManager.GetInstance.PlayVoice(playerId, "hit");
+            GameManager.GetInstance.PlayVoice(playerId,player.playerId, "hit","get-hit");
             item = null;
             isHolding = false;
             speedMalus = 0;
@@ -288,8 +288,6 @@ public class Player : MonoBehaviour
         else
             yield return new WaitForSeconds(time);
         isStunned = false;
-        if(time <0)
-            GameManager.GetInstance.PlayVoice(playerId, "get-hit");
     }
 
     IEnumerator BatCooldown()
