@@ -34,6 +34,7 @@ public class BatZone : MonoBehaviour
                 Debug.Log("Player take bat");
                 player.item = bat;
                 player.isHolding = true;
+                player.canHit = true;
                 batTaken = true;
                 batOnIt = false;
                 animator.SetBool("Bat", batOnIt);

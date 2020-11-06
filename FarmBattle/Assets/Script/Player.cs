@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float pickDistance;
     public float stunTime;
     public TEAM team;
+    public float batCooldown;
 
     private enum ANIM
     {
@@ -42,6 +43,8 @@ public class Player : MonoBehaviour
     public Action<Pickable> OnRelease;
     [HideInInspector]
     public bool isHolding = false;
+    [HideInInspector]
+    public bool canHit = false;
 
     private bool isStunned = false;
     private Rewired.Player player;
@@ -90,7 +93,7 @@ public class Player : MonoBehaviour
             if (player.GetButtonDown("Action"))
                 Action();
             AnimatorManager(moveX, moveY);
-            if (player.GetButtonDown("Hit") && isHolding && item.type == Pickable.TYPE.BAT)
+            if (player.GetButtonDown("Hit") && isHolding && item.type == Pickable.TYPE.BAT && canHit)
                 TryHit();
         }
         else
@@ -187,16 +190,21 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Hit");
         animator.SetTrigger("Hit");
+        canHit = false;
         RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).GetChild(0).position, transform.GetChild(0).GetChild(0).position - transform.position, pickDistance);
         Player player = hit && hit.transform.tag == "Player" ? hit.transform.GetComponent<Player>() : null;
         if (player != null && player.team != team)
         {
             player.Stunned();
             GameManager.GetInstance.PlayVoice(playerId, "hit");
+            item = null;
+            isHolding = false;
+            speedMalus = 0;
         }
-        item = null;
-        isHolding = false;
-        speedMalus = 0;
+        else
+        {
+            StartCoroutine(BatCooldown());
+        }
     }
 
     public void Stunned()
@@ -248,5 +256,11 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(stunTime);
         isStunned = false;
         GameManager.GetInstance.PlayVoice(playerId, "get-hit");
+    }
+
+    IEnumerator BatCooldown()
+    {
+        yield return new WaitForSeconds(batCooldown);
+        canHit = true;
     }
 }
