@@ -1,22 +1,82 @@
 fileFormatVersion: 2
-guid: 19ed32a32638f8243b7bb92e5e50dc10
+guid: efd9e171bf7020a4ab51781810a84f20
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8009342378045012566
-    second: hautParleurs-sheet_0
+      213: -789038118739096005
+    second: hautParleurs_0
   - first:
-      213: -7991285103834909120
-    second: hautParleurs-sheet_1
+      213: 2337283258604623069
+    second: hautParleurs_1
   - first:
-      213: -1428065399745434883
-    second: hautParleurs-sheet_2
+      213: -2896602431510091162
+    second: hautParleurs_2
   - first:
-      213: -3250681519728085873
-    second: hautParleurs-sheet_3
+      213: -1586654805449936549
+    second: hautParleurs_3
   - first:
-      213: -9081091695664328390
-    second: hautParleurs-sheet_4
+      213: 1626907327840426228
+    second: hautParleurs_4
+  - first:
+      213: -5451430778825389112
+    second: hautParleurs_5
+  - first:
+      213: 3704559432500819354
+    second: hautParleurs_6
+  - first:
+      213: 868285873091256859
+    second: hautParleurs_7
+  - first:
+      213: 930855721519718405
+    second: hautParleurs_8
+  - first:
+      213: 7191470745755053071
+    second: hautParleurs_9
+  - first:
+      213: 3670091544832066287
+    second: hautParleurs_10
+  - first:
+      213: 6478351427663558609
+    second: hautParleurs_11
+  - first:
+      213: -591300688269391378
+    second: hautParleurs_12
+  - first:
+      213: -7318469413124295329
+    second: hautParleurs_13
+  - first:
+      213: -4479993226496208182
+    second: hautParleurs_14
+  - first:
+      213: 1565172131604743018
+    second: hautParleurs_15
+  - first:
+      213: 6428533800113739450
+    second: hautParleurs_16
+  - first:
+      213: -8867283934912791729
+    second: hautParleurs_17
+  - first:
+      213: -4321804993398992060
+    second: hautParleurs_18
+  - first:
+      213: 8422422637914029157
+    second: hautParleurs_19
+  - first:
+      213: 138353469835643451
+    second: hautParleurs_20
+  - first:
+      213: 5582478754027386172
+    second: hautParleurs_21
+  - first:
+      213: -3994441865134325256
+    second: hautParleurs_22
+  - first:
+      213: 5605963549883877413
+    second: hautParleurs_23
+  - first:
+      213: -901367767014259694
+    second: hautParleurs_24
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -104,13 +164,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hautParleurs-sheet_0
+      name: hautParleurs_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 320
-        height: 480
+        width: 400
+        height: 560
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa50520ea8919d090800000000000000
-      internalID: -8009342378045012566
+      spriteID: b3e4052f206cc05f0800000000000000
+      internalID: -789038118739096005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hautParleurs-sheet_1
+      name: hautParleurs_1
       rect:
         serializedVersion: 2
-        x: 320
+        x: 400
         y: 0
-        width: 320
-        height: 480
+        width: 400
+        height: 560
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,20 +199,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 046bc07a980491190800000000000000
-      internalID: -7991285103834909120
+      spriteID: dd498908db2bf6020800000000000000
+      internalID: 2337283258604623069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hautParleurs-sheet_2
+      name: hautParleurs_2
       rect:
         serializedVersion: 2
-        x: 640
+        x: 800
         y: 0
-        width: 320
-        height: 480
+        width: 400
+        height: 560
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,20 +220,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfaa52cc51e7e2ce0800000000000000
-      internalID: -1428065399745434883
+      spriteID: 66aee467f633dc7d0800000000000000
+      internalID: -2896602431510091162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hautParleurs-sheet_3
+      name: hautParleurs_3
       rect:
         serializedVersion: 2
-        x: 960
+        x: 1200
         y: 0
-        width: 320
-        height: 480
+        width: 400
+        height: 560
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +241,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f843ea2716243e2d0800000000000000
-      internalID: -3250681519728085873
+      spriteID: b517df36cd11bf9e0800000000000000
+      internalID: -1586654805449936549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hautParleurs-sheet_4
+      name: hautParleurs_4
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 1600
         y: 0
-        width: 320
-        height: 480
+        width: 400
+        height: 560
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,8 +262,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a319d2b673b79f180800000000000000
-      internalID: -9081091695664328390
+      spriteID: 4f8986e489fe39610800000000000000
+      internalID: 1626907327840426228
       vertices: []
       indices: 
       edges: []
