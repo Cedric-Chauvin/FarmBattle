@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 using UnityEngine.SceneManagement;
+using UnityEditorInternal;
 
 public class MainMenu : MonoBehaviour
 {
     public int playerId;
     public string sceneToLoad;
+    public GameObject pressA;
+    public float pressACooldownAppear;
+    public float pressACooldownDisappear;
 
     private Rewired.Player player;
+    private bool aAppear = false;
+    private bool aDisappear = true;
 
     private void Awake()
     {
@@ -22,5 +28,30 @@ public class MainMenu : MonoBehaviour
         {
             SceneManager.LoadScene(sceneToLoad);
         }
+
+        if (aAppear)
+        {
+            pressA.SetActive(true);
+            StartCoroutine(PressACooldownAppear());
+        }
+        if (aDisappear)
+        {
+            pressA.SetActive(false);
+            StartCoroutine(PressACooldownDisappear());
+        }
+    }
+
+    IEnumerator PressACooldownAppear()
+    {
+        aAppear = false;
+        yield return new WaitForSeconds(pressACooldownAppear);
+        aDisappear = true;
+    }
+
+    IEnumerator PressACooldownDisappear()
+    {
+        aDisappear = false;
+        yield return new WaitForSeconds(pressACooldownDisappear);
+        aAppear = true;
     }
 }
