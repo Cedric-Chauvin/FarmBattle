@@ -147,7 +147,8 @@ MonoBehaviour:
   speedMalus: 10
   type: 1
   rigidbody: {fileID: 0}
-  PumpNumberToFillTheBucket: 5
+  isHolding: 0
+  PumpNumberToFillTheBucket: 3
   bucketEmpty: {fileID: 21300000, guid: f11dc72946101c0499d2d2da0cdad942, type: 3}
   bucketFull: {fileID: 21300000, guid: 8a751c427ac202849bd8c12d0a721df7, type: 3}
   fillingRate: 0

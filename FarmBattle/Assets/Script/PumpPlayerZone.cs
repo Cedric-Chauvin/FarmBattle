@@ -7,6 +7,7 @@ public class PumpPlayerZone : MonoBehaviour
 {
     public PumpBucketZone pumpBucketZone;
     public float pumpCooldown;
+    public GameObject ghost;
 
     private List<Player> players = new List<Player>();
     private bool canPump = true;
@@ -41,7 +42,7 @@ public class PumpPlayerZone : MonoBehaviour
         {
             if (player.tryPump)
             {
-                if (canPump && pumpBucketZone.bucket && pumpBucketZone.transform.GetChild(0).childCount != 0)
+                if (canPump && pumpBucketZone.bucket && pumpBucketZone.transform.GetChild(0).childCount > 1)
                 {
                     pumpBucketZone.isPumping = true;
                     canPump = false;
@@ -51,6 +52,14 @@ public class PumpPlayerZone : MonoBehaviour
                 player.tryPump = false;
             }
         }
+
+        if (pumpBucketZone.ghost.activeSelf && ghost.activeSelf)
+            ghost.SetActive(false);
+        if (!pumpBucketZone.ghost.activeSelf && !ghost.activeSelf)
+            ghost.SetActive(true);
+        if (pumpBucketZone.transform.GetChild(0).childCount > 1 && pumpBucketZone.bucket.fillingRate >= 100 && ghost.activeSelf)
+            ghost.SetActive(false);
+
     }
 
     IEnumerator PumpCooldown()

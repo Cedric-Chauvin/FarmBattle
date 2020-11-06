@@ -24,7 +24,7 @@ public class Bucket : Pickable
     {
         Debug.Log("Bucket: " + fillingRate + "/100");
         if (fillingRate < 100)
-            fillingRate += 100 / PumpNumberToFillTheBucket;
+            fillingRate += 100 / PumpNumberToFillTheBucket+1;
     }
 
     private void Update()
