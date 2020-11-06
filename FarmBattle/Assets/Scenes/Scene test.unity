@@ -13181,6 +13181,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1376127560}
     m_Modifications:
+    - target: {fileID: 5298441770833052426, guid: 5788c87eff6d0fb4e9caad82531576ae, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3d0fd25f0a431a04aaff2b01d88670d5, type: 2}
     - target: {fileID: 8291630454830834576, guid: 5788c87eff6d0fb4e9caad82531576ae, type: 3}
       propertyPath: m_Name
       value: BatZone (1)
