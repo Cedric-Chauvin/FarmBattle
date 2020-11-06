@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public float stunTime;
     public TEAM team;
     public float batCooldown;
+    public float dropBatCooldown = 2f;
 
     private enum ANIM
     {
@@ -45,6 +46,8 @@ public class Player : MonoBehaviour
     public bool isHolding = false;
     [HideInInspector]
     public bool canHit = false;
+    [HideInInspector]
+    public bool canDropBat = false;
 
     private bool isStunned = false;
     private Rewired.Player player;
@@ -153,9 +156,12 @@ public class Player : MonoBehaviour
     {
         if (item && item.type == Pickable.TYPE.BAT)
         {
-            isHolding = false;
-            item = null;
-            speedMalus = 0;
+            if (canDropBat)
+            {
+                isHolding = false;
+                item = null;
+                speedMalus = 0;
+            }
             return;
         }
         if (isHolding)
@@ -284,5 +290,11 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(batCooldown);
         canHit = true;
+    }
+
+    public IEnumerator DropBatCooldown()
+    {
+        yield return new WaitForSeconds(dropBatCooldown);
+        canDropBat = true;
     }
 }
