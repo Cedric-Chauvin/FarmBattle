@@ -22,11 +22,6 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        _instance = null;
-    }
-
     private void Awake()
     {
         if (_instance == null)

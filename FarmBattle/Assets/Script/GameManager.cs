@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public Player[] players;
 
-    private static int[] ID = new int[4];
+    private static int[] ID;
 
     private static GameManager instance;
     private Player lastPlayer;
@@ -21,12 +21,14 @@ public class GameManager : MonoBehaviour
             instance = this;
         else
             Destroy(this.gameObject);
+
+        ID = SelectionScene.GetPlayers();
+        for (int i = 0; i < ID.Length; i++)
+        {
+            players[i].playerId = ID[i];
+        }
     }
 
-    private void OnDestroy()
-    {
-        instance = null;
-    }
     public static GameManager GetInstance => instance;
 
     private void Start()

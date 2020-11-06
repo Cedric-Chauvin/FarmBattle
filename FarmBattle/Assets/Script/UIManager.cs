@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,8 +16,10 @@ public class UIManager : MonoBehaviour
     public RectTransform repuPanel;
     public Text repuText;
 
-    private int score1 = 0;
+    private int score1 = 27;
     private int score2 = 0;
+    private bool endGme = false;
+    private Rewired.Player player;
 
     private void Awake()
     {
@@ -28,17 +31,30 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (score1 >= 27)
+        if (!endGme)
         {
-            repuPanel.gameObject.SetActive(true);
-            repuText.text = score1.ToString() + "/" + score2.ToString();
-            EndGame();
+            if (score1 >= 27)
+            {
+                repuPanel.gameObject.SetActive(true);
+                repuText.text = score1.ToString() + "/" + score2.ToString();
+                EndGame();
+            }
+            else if (score2 >= 27)
+            {
+                demoPanel.gameObject.SetActive(false);
+                demoText.text = score2.ToString() + "/" + score1.ToString();
+                EndGame();
+            }
         }
-        else if (score2 >= 27)
+        if(endGme)
         {
-            demoPanel.gameObject.SetActive(false);
-            demoText.text = score2.ToString() + "/" + score1.ToString();
-            EndGame();
+            if (player.GetButtonDown("Action"))
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (player.GetButtonDown("Hit"))
+                SceneManager.LoadScene("MainMenu");
+            if (player.GetButtonDown("Y"))
+                SceneManager.LoadScene("Selection screen");
+
         }
     }
 
@@ -47,6 +63,8 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0;
         team1Score.transform.parent.gameObject.SetActive(false);
         team2Score.transform.parent.gameObject.SetActive(false);
+        player = Rewired.ReInput.players.GetPlayer(0);
+        endGme = true;
     }
 
     public void AddPoint(Player.TEAM team, int point)
