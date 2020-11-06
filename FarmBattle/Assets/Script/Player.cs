@@ -149,7 +149,12 @@ public class Player : MonoBehaviour
     private void Action()
     {
         if (item && item.type == Pickable.TYPE.BAT)
+        {
+            isHolding = false;
+            item = null;
+            speedMalus = 0;
             return;
+        }
         if (isHolding)
         {
             RemoveItem();
@@ -191,6 +196,7 @@ public class Player : MonoBehaviour
         }
         item = null;
         isHolding = false;
+        speedMalus = 0;
     }
 
     public void Stunned()
