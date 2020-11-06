@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour
     {
         PlayVoice(Player.TEAM.TEAM1, "start");
         Invoke("BidenReply", 4f);
+        foreach (Player item in players)
+        {
+            item.Stunned(9.50f);
+        }
     }
 
     private void BidenReply()
@@ -47,9 +51,9 @@ public class GameManager : MonoBehaviour
             return;
         int index;
         if (team == Player.TEAM.TEAM1)
-            index = Random.Range(0, 2);
-        else
             index = Random.Range(2, 4);
+        else
+            index = Random.Range(0, 2);
         PlaySound(players[index], name);
     }
     public void PlayVoice(int id,string name)

@@ -102,7 +102,6 @@ public class Player : MonoBehaviour
         else
         {
             rigidbody.velocity = new Vector3(0, 0, 0);
-            animator.SetInteger("status", Convert.ToInt32(ANIM.STUNNED));
         }
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
         transform.GetChild(0).GetChild(0).position = new Vector3(transform.GetChild(0).GetChild(0).position.x, transform.GetChild(0).GetChild(0).position.y, transform.GetChild(0).GetChild(0).position.y);
@@ -235,10 +234,12 @@ public class Player : MonoBehaviour
         return new RaycastHit2D();
     }
 
-    public void Stunned()
+    public void Stunned(float time = -1)
     {
         isStunned = true;
-        StartCoroutine(StunRoutine());
+        StartCoroutine(StunRoutine(time));
+        if (time < 0)
+            animator.SetInteger("status", Convert.ToInt32(ANIM.STUNNED));
         RemoveItem();
     }
 
@@ -279,11 +280,15 @@ public class Player : MonoBehaviour
         DesactivateBubble();
     }
 
-    IEnumerator StunRoutine()
+    IEnumerator StunRoutine(float time = -1)
     {
-        yield return new WaitForSeconds(stunTime);
+        if(time < 0)
+            yield return new WaitForSeconds(stunTime);
+        else
+            yield return new WaitForSeconds(time);
         isStunned = false;
-        GameManager.GetInstance.PlayVoice(playerId, "get-hit");
+        if(time <0)
+            GameManager.GetInstance.PlayVoice(playerId, "get-hit");
     }
 
     IEnumerator BatCooldown()

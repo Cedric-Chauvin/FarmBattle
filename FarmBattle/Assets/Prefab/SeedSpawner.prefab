@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 675e4cb3f348db340bae23c3456ddb12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 5
-  maxSeedsInGame: 25
+  cooldown: 10
+  maxSeedsInGame: 15
   classicSeed: {fileID: 0}
   goldSeed: {fileID: 0}
   goldSeedSpawnRate: 20
