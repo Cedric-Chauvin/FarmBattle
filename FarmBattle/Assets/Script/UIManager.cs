@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     public RectTransform repuPanel;
     public Text repuText;
 
-    private int score1 = 27;
+    private int score1 = 0;
     private int score2 = 0;
     private bool endGme = false;
     private Rewired.Player player;
