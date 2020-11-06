@@ -89,9 +89,9 @@ public class Player : MonoBehaviour
             }
             if (player.GetButtonDown("Action"))
                 Action();
+            AnimatorManager(moveX, moveY);
             if (player.GetButtonDown("Hit") && isHolding && item.type == Pickable.TYPE.BAT)
                 TryHit();
-            AnimatorManager(moveX, moveY);
         }
         else
         {
@@ -182,7 +182,6 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Hit");
         animator.SetTrigger("Hit");
-        animator.SetInteger("status", Convert.ToInt32(ANIM.HIT));
         RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).GetChild(0).position, transform.GetChild(0).GetChild(0).position - transform.position, pickDistance);
         Player player = hit && hit.transform.tag == "Player" ? hit.transform.GetComponent<Player>() : null;
         if (player != null && player.team != team)
